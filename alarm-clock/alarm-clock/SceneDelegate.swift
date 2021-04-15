@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let onboardingShowed = UserDefaults.standard.bool(forKey: "onboarding_showed")
         if onboardingShowed {
-            let pageViewController = PageViewController.instance()
+            let pageViewController = AlarmClockViewController.instance()
             window?.rootViewController = pageViewController
         } else {
             let pageViewController = PageViewController.instance()

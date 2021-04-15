@@ -62,7 +62,7 @@ extension PageViewController: OnboardingProtocol {
     func ignore() {
         UserDefaults.standard.setValue(true, forKey: "onboarding_showed")
         guard let window = self.view.window else { return }
-        let viewController = UIViewController()
+        let viewController = AlarmClockViewController.instance()
         viewController.view.backgroundColor = .red
         window.rootViewController = viewController
         let options: UIView.AnimationOptions = .transitionFlipFromRight
