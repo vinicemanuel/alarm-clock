@@ -30,8 +30,6 @@ class OnboardingViewController: UIViewController {
         super.viewDidLoad()
         
         self.descLabel.text = textDesc
-        
-        self.nextButton.isHidden = self.onboardingIndex == .last
     }
     
     @IBAction func nextButtonTapped(_ sender: Any) {

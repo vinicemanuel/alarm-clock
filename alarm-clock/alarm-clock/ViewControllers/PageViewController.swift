@@ -27,6 +27,8 @@ class PageViewController: UIPageViewController {
         self.onboardingviewControllers.append(OnboardingViewController.instance(description: "Descrição da funcionalidade de contagem regressiva.", onboardingIndex: .second))
         self.onboardingviewControllers.append(OnboardingViewController.instance(description: "Descrição da funcionalidade de notificação.", onboardingIndex: .last))
         
+        self.onboardingviewControllers.forEach({$0.delegate = self})
+        
         self.setViewControllers([self.onboardingviewControllers[0]], direction: .forward, animated: true, completion: nil)
     }
     
@@ -44,11 +46,27 @@ class PageViewController: UIPageViewController {
 
 extension PageViewController: OnboardingProtocol {
     func nextView(from index: OnboardingIndex) {
-        print("next page")
+        
+        switch index {
+        case .first:
+            self.currentIndex = 1
+            self.setViewControllers([self.onboardingviewControllers[1]], direction: .forward, animated: true, completion: nil)
+        case .second:
+            self.currentIndex = 2
+            self.setViewControllers([self.onboardingviewControllers[2]], direction: .forward, animated: true, completion: nil)
+        default:
+            self.ignore()
+        }
     }
     
     func ignore() {
-        print("ignore")
+        UserDefaults.standard.setValue(true, forKey: "onboarding_showed")
+        guard let window = self.view.window else { return }
+        let viewController = UIViewController()
+        viewController.view.backgroundColor = .red
+        window.rootViewController = viewController
+        let options: UIView.AnimationOptions = .transitionFlipFromRight
+        UIView.transition(with: window, duration: 0.3, options: options, animations: {}, completion: nil)
     }
 }
 
