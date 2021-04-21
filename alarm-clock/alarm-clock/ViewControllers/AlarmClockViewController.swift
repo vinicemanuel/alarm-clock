@@ -14,18 +14,21 @@ class AlarmClockViewController: UIViewController {
     @IBOutlet weak var clockImage: UIImageView!
     @IBOutlet weak var timerButton: UIButton!
     
+    let options = ["5 segundos" ,"10 segundos", "15 segundos", "20 segundos"]
+    
     var timerStaterd = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.pickerView.delegate = self
+        self.pickerView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         self.showTimer(started: self.timerStaterd)
+        self.showClockImage(size: self.view.frame.size)
     }
 
     static func instance() -> AlarmClockViewController {
@@ -36,16 +39,20 @@ class AlarmClockViewController: UIViewController {
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        if size.width > size.height {
-            self.clockImage.image = #imageLiteral(resourceName: "digital")
-        } else {
-            self.clockImage.image = #imageLiteral(resourceName: "analogico")
-        }
+        self.showClockImage(size: size)
     }
     
     @IBAction func buttonTapped(_ sender: UIButton) {
         self.timerStaterd.toggle()
         self.showTimer(started: self.timerStaterd)
+    }
+    
+    private func showClockImage(size: CGSize) {
+        if size.width > size.height {
+            self.clockImage.image = #imageLiteral(resourceName: "digital")
+        } else {
+            self.clockImage.image = #imageLiteral(resourceName: "analogico")
+        }
     }
     
     private func showTimer(started: Bool) {
@@ -55,5 +62,12 @@ class AlarmClockViewController: UIViewController {
         let buttonTitle = started ? "Cancel" : "Start"
         self.timerButton.setTitle(buttonTitle, for: .normal)
     }
+}
+
+extension AlarmClockViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+   
+    func numberOfComponents(in pickerView: UIPickerView) -> Int { 1 }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int { self.options.count }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? { self.options[row] }
 }
 

@@ -40,7 +40,7 @@
                                 </variation>
                             </imageView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ml0-Ng-W8m">
-                                <rect key="frame" x="384" y="20" width="468" height="200"/>
+                                <rect key="frame" x="384" y="56.5" width="468" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="U7B-Ja-aWy"/>
                                 </constraints>
@@ -80,7 +80,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhm-8r-buH">
-                                <rect key="frame" x="384" y="20" width="468" height="200"/>
+                                <rect key="frame" x="384" y="56.5" width="468" height="200"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -101,6 +101,9 @@
                             <constraint firstItem="G4a-eg-xPN" firstAttribute="bottom" secondItem="E2d-wG-h7O" secondAttribute="bottom" constant="20" id="Iqj-tg-Uyw"/>
                             <constraint firstItem="ml0-Ng-W8m" firstAttribute="top" secondItem="KId-XY-UKH" secondAttribute="bottom" constant="20" id="O5E-I6-x84"/>
                             <constraint firstItem="ml0-Ng-W8m" firstAttribute="leading" secondItem="KId-XY-UKH" secondAttribute="trailing" constant="20" id="Qet-kU-Kws"/>
+                            <constraint firstItem="ml0-Ng-W8m" firstAttribute="centerY" secondItem="KId-XY-UKH" secondAttribute="centerY" id="Vjk-dD-1KL">
+                                <variation key="heightClass=compact-widthClass=regular" constant="-40"/>
+                            </constraint>
                             <constraint firstItem="KId-XY-UKH" firstAttribute="leading" secondItem="G4a-eg-xPN" secondAttribute="leading" id="aw5-Sq-vx8">
                                 <variation key="heightClass=compact-widthClass=regular" constant="20"/>
                             </constraint>
@@ -132,6 +135,7 @@
                                 <exclude reference="GcX-oJ-pdM"/>
                                 <exclude reference="O5E-I6-x84"/>
                                 <exclude reference="Qet-kU-Kws"/>
+                                <exclude reference="Vjk-dD-1KL"/>
                                 <exclude reference="oFk-4n-iZb"/>
                                 <exclude reference="g47-fM-Lhy"/>
                                 <exclude reference="wU5-j3-56B"/>
@@ -145,8 +149,9 @@
                                 <include reference="knQ-eN-gE6"/>
                                 <include reference="C7u-QU-4OV"/>
                                 <include reference="aw5-Sq-vx8"/>
-                                <include reference="7xk-w8-Rfv"/>
+                                <exclude reference="7xk-w8-Rfv"/>
                                 <include reference="Qet-kU-Kws"/>
+                                <include reference="Vjk-dD-1KL"/>
                                 <include reference="g47-fM-Lhy"/>
                                 <include reference="zHc-JI-GIQ"/>
                             </mask>
