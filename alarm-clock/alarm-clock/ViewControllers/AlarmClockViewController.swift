@@ -44,12 +44,22 @@ class AlarmClockViewController: UIViewController {
     }
     
     @IBAction func buttonTapped(_ sender: UIButton) {
+        if self.interval == 0 { return }
         self.timerStaterd.toggle()
-        self.showTimer(started: self.timerStaterd)
+
         if self.timerStaterd {
-            self.startTimer()
+            UserNotificationHelper.shared.askForPermission { (granted) in
+                if granted {
+                    UserNotificationHelper.shared.sendNotificationWith(interval: self.interval)
+                    DispatchQueue.main.async {
+                        self.startTimer()
+                        self.showTimer(started: self.timerStaterd)
+                    }
+                }
+            }
         } else {
             self.stopTime()
+            self.showTimer(started: self.timerStaterd)
         }
     }
     

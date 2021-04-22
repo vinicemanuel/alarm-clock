@@ -16,6 +16,7 @@
 		093B93C32627B95800673F12 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093B93C22627B95800673F12 /* PageViewController.swift */; };
 		09B4E45D2628FC6900A52E38 /* AlarmClock.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09B4E45C2628FC6900A52E38 /* AlarmClock.storyboard */; };
 		09B4E4602628FCA300A52E38 /* AlarmClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B4E45F2628FCA300A52E38 /* AlarmClockViewController.swift */; };
+		09C3A868263233E400FC1908 /* UserNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C3A867263233E400FC1908 /* UserNotificationHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		093B93C22627B95800673F12 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		09B4E45C2628FC6900A52E38 /* AlarmClock.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AlarmClock.storyboard; sourceTree = "<group>"; };
 		09B4E45F2628FCA300A52E38 /* AlarmClockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmClockViewController.swift; sourceTree = "<group>"; };
+		09C3A867263233E400FC1908 /* UserNotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		093B93A42627B4C700673F12 /* alarm-clock */ = {
 			isa = PBXGroup;
 			children = (
+				09513E5B263233A0001437D1 /* Helpers */,
 				093B93C12627B93B00673F12 /* ViewControllers */,
 				093B93BF2627B92200673F12 /* Resources */,
 				093B93A52627B4C700673F12 /* AppDelegate.swift */,
@@ -90,6 +93,14 @@
 				09B4E45F2628FCA300A52E38 /* AlarmClockViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		09513E5B263233A0001437D1 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				09C3A867263233E400FC1908 /* UserNotificationHelper.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,6 +177,7 @@
 				09B4E4602628FCA300A52E38 /* AlarmClockViewController.swift in Sources */,
 				093B93AA2627B4C700673F12 /* OnboardingViewController.swift in Sources */,
 				093B93A62627B4C700673F12 /* AppDelegate.swift in Sources */,
+				09C3A868263233E400FC1908 /* UserNotificationHelper.swift in Sources */,
 				093B93A82627B4C700673F12 /* SceneDelegate.swift in Sources */,
 				093B93C32627B95800673F12 /* PageViewController.swift in Sources */,
 			);
