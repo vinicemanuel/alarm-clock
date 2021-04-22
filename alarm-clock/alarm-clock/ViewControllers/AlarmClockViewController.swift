@@ -69,6 +69,7 @@ class AlarmClockViewController: UIViewController {
     private func stopAlarm() {
         self.stopTimeInterval()
         self.showTimer(started: self.timerStaterd)
+        self.stopAnimateImageView()
         UserNotificationHelper.shared.disableNotification()
     }
     
@@ -84,9 +85,10 @@ class AlarmClockViewController: UIViewController {
         
         self.timer = Timer(fire: Date(), interval: 1, repeats: true, block: { [unowned self] (_) in
             
-            if self.interval  == 0 {
+            if self.interval == 0 {
                 self.timer?.invalidate()
                 self.timerLabel.text = "00:00"
+                self.animateImageView()
             } else {
                 self.timerLabel.text = self.interval < 10 ? "00:0\(self.interval)" : "00:\(self.interval)"
             }
@@ -112,6 +114,22 @@ class AlarmClockViewController: UIViewController {
         
         let buttonTitle = started ? "Cancel" : "Start"
         self.timerButton.setTitle(buttonTitle, for: .normal)
+    }
+    
+    private func animateImageView() {
+        let animation = CAKeyframeAnimation()
+        animation.keyPath = "position.y"
+        animation.values = [0, 50, 0]
+        animation.keyTimes = [0, 0.5, 1]
+        animation.duration = 0.3
+        animation.isAdditive = true
+        animation.repeatCount = .greatestFiniteMagnitude
+        
+        self.clockImage.layer.add(animation, forKey: "move")
+    }
+    
+    private func stopAnimateImageView() {
+        self.clockImage.layer.removeAllAnimations()
     }
 }
 
