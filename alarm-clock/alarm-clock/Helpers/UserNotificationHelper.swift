@@ -37,6 +37,6 @@ class UserNotificationHelper {
     }
     
     func disableNotification() {
-        
+        self.center.removePendingNotificationRequests(withIdentifiers: [self.notificationID])
     }
 }

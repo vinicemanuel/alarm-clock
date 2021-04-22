@@ -48,29 +48,38 @@ class AlarmClockViewController: UIViewController {
         self.timerStaterd.toggle()
 
         if self.timerStaterd {
-            UserNotificationHelper.shared.askForPermission { (granted) in
-                if granted {
-                    UserNotificationHelper.shared.sendNotificationWith(interval: self.interval)
-                    DispatchQueue.main.async {
-                        self.startTimer()
-                        self.showTimer(started: self.timerStaterd)
-                    }
-                }
-            }
+            self.startAlarm()
         } else {
-            self.stopTime()
-            self.showTimer(started: self.timerStaterd)
+            self.stopAlarm()
         }
     }
     
-    private func stopTime() {
+    private func startAlarm() {
+        UserNotificationHelper.shared.askForPermission { (granted) in
+            if granted {
+                UserNotificationHelper.shared.sendNotificationWith(interval: self.interval)
+                DispatchQueue.main.async {
+                    self.startTimerInterval()
+                    self.showTimer(started: self.timerStaterd)
+                }
+            }
+        }
+    }
+    
+    private func stopAlarm() {
+        self.stopTimeInterval()
+        self.showTimer(started: self.timerStaterd)
+        UserNotificationHelper.shared.disableNotification()
+    }
+    
+    private func stopTimeInterval() {
         self.timer?.invalidate()
         self.timerLabel.text = "00:00"
         self.interval = 0
         self.pickerView.selectRow(0, inComponent: 0, animated: false)
     }
     
-    private func startTimer() {
+    private func startTimerInterval() {
         if self.interval == 0 { return }
         
         self.timer = Timer(fire: Date(), interval: 1, repeats: true, block: { [unowned self] (_) in
